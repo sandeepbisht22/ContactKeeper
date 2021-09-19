@@ -30,7 +30,7 @@ const ContactState = (props) => {
         type: "personal",
       },
       {
-        id: 1,
+        id: 3,
         name: "mummy",
         email: "mummy@gmail.com",
         phone: "3333-333-3333",
@@ -55,12 +55,12 @@ const ContactState = (props) => {
   //clear contact
 
   return (
-    <ContactContext.Provider>
-      value=
-      {{
+    <ContactContext.Provider
+      value={{
         contacts: state.contacts,
       }}
-      {props.childern}
+    >
+      {props.children}
     </ContactContext.Provider>
   );
 };
