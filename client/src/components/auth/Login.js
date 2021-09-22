@@ -41,12 +41,12 @@ const Login = () => {
             onChange={onChange}
           ></input>
         </div>
+        <input
+          type="submit"
+          value="Register"
+          className="btn btn-primary btn-block"
+        />
       </form>
-      <input
-        type="submit"
-        value="Register"
-        className="btn btn-primary btn-block"
-      />
     </div>
   );
 };
