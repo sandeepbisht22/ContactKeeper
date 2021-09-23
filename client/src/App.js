@@ -19,8 +19,8 @@ const App = () => {
           <Router>
             <Fragment className="App">
               <Navbar />
-              <div class="container">
-                <Alerts></Alerts>
+              <div className="container">
+                <Alerts> </Alerts>
                 <switch>
                   <Route exact path="/" component={Home}></Route>
                   <Route exact path="/about" component={About}></Route>

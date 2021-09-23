@@ -1,9 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import AuthContext from "../../context/auth/authContext";
 import AlertContext from "./../../context/alert/alertContext";
 
 const Register = () => {
   const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+
   const { setAlert } = alertContext;
+  const { register, error, clearErrors } = authContext;
+  useEffect(() => {
+    if (error === "User already exist") {
+      setAlert(error, "danger");
+      clearErrors();
+    }
+  }, [error]);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -25,6 +35,11 @@ const Register = () => {
     } else if (password !== password2) {
       setAlert("password doesn't match", "danger");
     } else {
+      register({
+        name,
+        email,
+        password,
+      });
       console.log("register Submit");
     }
   };
@@ -41,6 +56,7 @@ const Register = () => {
             name="name"
             value={name}
             onChange={onChange}
+            required
           ></input>
         </div>
         <div className="form-group">
@@ -50,6 +66,7 @@ const Register = () => {
             name="email"
             value={email}
             onChange={onChange}
+            required
           ></input>
         </div>
         <div className="form-group">
@@ -59,6 +76,8 @@ const Register = () => {
             name="password"
             value={password}
             onChange={onChange}
+            required
+            minLength="6"
           ></input>
         </div>
         <div className="form-group">
@@ -68,6 +87,8 @@ const Register = () => {
             name="password2"
             value={password2}
             onChange={onChange}
+            required
+            minLength="6"
           ></input>
         </div>
         <input
