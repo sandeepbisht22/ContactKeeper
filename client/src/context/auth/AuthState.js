@@ -13,21 +13,22 @@ import {
   LOGOUT,
   CLEAR_ERRORS,
 } from "../types";
+
 const AuthState = (props) => {
   const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
-    loading: false,
+    loading: true,
     error: null,
     user: null,
   };
 
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
   //load user
   const loadUser = async () => {
-    console.log("load user called");
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
+    setAuthToken(localStorage.token);
+
     try {
       const res = await axios.get("/api/auth");
       dispatch({
@@ -38,6 +39,7 @@ const AuthState = (props) => {
       dispatch({ type: AUTH_ERROR });
     }
   };
+
   //Register USer
   const register = async (formData) => {
     const config = {
@@ -89,7 +91,6 @@ const AuthState = (props) => {
   };
   //clear error
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
-  const [state, dispatch] = useReducer(authReducer, initialState);
   return (
     <AuthContext.Provider
       value={{

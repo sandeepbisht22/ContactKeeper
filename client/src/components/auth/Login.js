@@ -16,11 +16,6 @@ const Login = (props) => {
     if (error === "invalid Email" || error === "invalid Password") {
       setAlert(error, "danger");
       clearErrors();
-    } else {
-      loginUser({
-        email,
-        password,
-      });
     }
     // eslint-disabled-next-line
   }, [error, isAuthenticated, props.history]);
