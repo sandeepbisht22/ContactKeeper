@@ -42,7 +42,7 @@ router.post(
       });
       const contact = await newContact.save();
 
-      return res.json({ contact });
+      res.json({ contact });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Server Error");
