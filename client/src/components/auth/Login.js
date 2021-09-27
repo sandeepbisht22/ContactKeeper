@@ -72,7 +72,7 @@ const Login = (props) => {
         </div>
         <input
           type="submit"
-          value="Register"
+          value="login"
           className="btn btn-primary btn-block"
         />
       </form>
